@@ -1,1 +1,145 @@
 
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Електронна система тестування</title>
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #101923;
+    color: #f1f3f5;
+}
+
+header {
+    text-align: center;
+    padding: 45px 20px 35px;
+    background: #192b3b;
+    border-bottom: 3px solid #d5ad55;
+}
+
+header h1 {
+    color: #e4bd67;
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+header p {
+    color: #c5ced6;
+    font-size: 16px;
+}
+
+main {
+    max-width: 1050px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+h2 {
+    color: #e4bd67;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.subjects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+}
+
+.subject {
+    background: #1c2b39;
+    border: 1px solid #34495a;
+    border-radius: 12px;
+    padding: 25px;
+    transition: 0.2s;
+}
+
+.subject:hover {
+    border-color: #e4bd67;
+    transform: translateY(-4px);
+}
+
+.subject h3 {
+    color: #e4bd67;
+    font-size: 20px;
+}
+
+.subject p {
+    color: #c5ced6;
+    line-height: 1.6;
+}
+
+.subject button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 7px;
+    background: #c49a45;
+    color: #14202b;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.subject button:hover {
+    background: #e4bd67;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #8795a2;
+    border-top: 1px solid #34495a;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>ЕЛЕКТРОННА СИСТЕМА ТЕСТУВАННЯ</h1>
+    <p>Навчальний простір для перевірки знань</p>
+</header>
+
+<main>
+    <h2>Оберіть навчальну дисципліну</h2>
+
+    <div class="subjects">
+
+        <section class="subject">
+            <h3>Фізика</h3>
+            <p>Розділ: Електродинаміка</p>
+            <p>Теоретичний матеріал і тестові завдання для перевірки знань.</p>
+            <button onclick="alert('Розділ готується')">Перейти до тестів</button>
+        </section>
+
+        <section class="subject">
+            <h3>Фізика</h3>
+            <p>Розділ: МКТ і термодинаміка</p>
+            <p>Теоретичний матеріал і тестові завдання для перевірки знань.</p>
+            <button onclick="alert('Розділ готується')">Перейти до тестів</button>
+        </section>
+
+        <section class="subject">
+            <h3>Вища математика</h3>
+            <p>Розділ: Елементи аналітичної геометрії</p>
+            <p>Теоретичний матеріал і тестові завдання для перевірки знань.</p>
+            <button onclick="alert('Розділ готується')">Перейти до тестів</button>
+        </section>
+
+    </div>
+</main>
+
+<footer>
+    Електронна система тестування
+</footer>
+
+</body>
+</html>
+
