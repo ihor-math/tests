@@ -101,7 +101,20 @@ footer {
 </head>
 
 <body>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<script>
+    const SUPABASE_URL = 'https://lbuavpqtapzxjybvxmag.supabase.co';
+
+    const SUPABASE_KEY = 'ТУТ_ТВІЙ_PUBLISHABLE_KEY';
+
+    const supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+    console.log('Supabase підключено');
+</script>
 <header>
     <h1>ЕЛЕКТРОННА СИСТЕМА ТЕСТУВАННЯ</h1>
     <p>Навчальний простір для перевірки знань</p>
