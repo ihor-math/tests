@@ -195,7 +195,24 @@ footer {
         >
 
         <button type="submit" id="loginButton">Увійти</button>
-    </form>
+        </form>
+
+    <button type="button" id="forgotButton"
+        style="background:transparent;color:#e4bd67;margin-top:10px;">
+        Забули пароль?
+    </button>
+
+    <div id="recoveryPanel" hidden>
+        <h3>Встановлення нового пароля</h3>
+
+        <form id="recoveryForm">
+            <label for="newPassword">Новий пароль</label>
+            <input type="password" id="newPassword"
+                   minlength="6" required>
+
+            <button type="submit">Зберегти новий пароль</button>
+        </form>
+    </div>
 
     <div id="message"></div>
 </section>
