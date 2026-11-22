@@ -282,7 +282,35 @@ const loginPanel = document.getElementById('loginPanel');
 const appContent = document.getElementById('appContent');
 const loginForm = document.getElementById('loginForm');
 const message = document.getElementById('message');
+const forgotButton = document.getElementById('forgotButton');
+const recoveryPanel = document.getElementById('recoveryPanel');
+const recoveryForm = document.getElementById('recoveryForm');
 
+// Надсилання листа для відновлення пароля
+forgotButton.addEventListener('click', async function() {
+    const email = document.getElementById('email').value.trim();
+
+    if (!email) {
+        message.textContent = 'Спочатку введіть свою електронну пошту.';
+        return;
+    }
+
+    message.textContent = 'Надсилаємо лист...';
+
+    const { error } = await supabaseClient.auth.resetPasswordForEmail(
+        email,
+        {
+            redirectTo: 'https://ihor-math.github.io/tests/'
+        }
+    );
+
+    if (error) {
+        message.textContent = 'Помилка: ' + error.message;
+    } else {
+        message.textContent =
+            'Запит на відновлення надіслано. Перевірте свою пошту.';
+    }
+});
 function showApp(user) {
     loginPanel.hidden = true;
     appContent.hidden = false;
