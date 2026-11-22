@@ -5,8 +5,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Електронна система тестування</title>
+
 <style>
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
@@ -17,20 +20,79 @@ body {
 
 header {
     text-align: center;
-    padding: 45px 20px 35px;
+    padding: 40px 20px;
     background: #192b3b;
     border-bottom: 3px solid #d5ad55;
 }
 
 header h1 {
     color: #e4bd67;
-    font-size: 30px;
-    margin-bottom: 12px;
+    font-size: 28px;
 }
 
 header p {
     color: #c5ced6;
+}
+
+.login-box {
+    width: 90%;
+    max-width: 420px;
+    margin: 65px auto;
+    padding: 30px;
+    background: #1c2b39;
+    border: 1px solid #526477;
+    border-top: 3px solid #d5ad55;
+    border-radius: 12px;
+}
+
+.login-box h2 {
+    color: #e4bd67;
+    text-align: center;
+    margin-top: 0;
+}
+
+.login-box label {
+    display: block;
+    margin: 18px 0 7px;
+    color: #dce3e9;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #526477;
+    border-radius: 6px;
+    background: #101923;
+    color: white;
     font-size: 16px;
+}
+
+.login-box button,
+.logout-button,
+.subject button {
+    width: 100%;
+    padding: 13px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 6px;
+    background: #c49a45;
+    color: #14202b;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login-box button:hover,
+.logout-button:hover,
+.subject button:hover {
+    background: #e4bd67;
+}
+
+#message {
+    margin-top: 15px;
+    color: #ff9b9b;
+    text-align: center;
+    line-height: 1.5;
 }
 
 main {
@@ -56,12 +118,10 @@ h2 {
     border: 1px solid #34495a;
     border-radius: 12px;
     padding: 25px;
-    transition: 0.2s;
 }
 
 .subject:hover {
     border-color: #e4bd67;
-    transform: translateY(-4px);
 }
 
 .subject h3 {
@@ -74,21 +134,22 @@ h2 {
     line-height: 1.6;
 }
 
-.subject button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 12px;
-    border: none;
-    border-radius: 7px;
-    background: #c49a45;
-    color: #14202b;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
+.user-panel {
+    max-width: 1050px;
+    margin: 25px auto 0;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    color: #c5ced6;
 }
 
-.subject button:hover {
-    background: #e4bd67;
+.logout-button {
+    width: auto;
+    margin: 0;
+    padding: 10px 20px;
 }
 
 footer {
@@ -96,75 +157,198 @@ footer {
     padding: 25px;
     color: #8795a2;
     border-top: 1px solid #34495a;
+    margin-top: 50px;
+}
+
+[hidden] {
+    display: none !important;
 }
 </style>
 </head>
 
 <body>
+
 <header>
     <h1>ЕЛЕКТРОННА СИСТЕМА ТЕСТУВАННЯ</h1>
     <p>Навчальний простір для перевірки знань</p>
 </header>
 
-<main>
-    <h2>Оберіть навчальну дисципліну</h2>
+<!-- ВІКНО ВХОДУ -->
+<section id="loginPanel" class="login-box">
+    <h2>Вхід до системи</h2>
 
-    <div class="subjects">
+    <form id="loginForm">
+        <label for="email">Електронна пошта</label>
+        <input
+            type="email"
+            id="email"
+            placeholder="Введіть електронну пошту"
+            required
+        >
 
-        <section class="subject">
-            <h3>Фізика</h3>
-            <p>Розділ: Електродинаміка</p>
-            <p>Теоретичний матеріал і тестові завдання для перевірки знань.</p>
-           <button onclick="location.href='electrodynamika.html'">Перейти до тестів</button>
-        </section>
+        <label for="password">Пароль</label>
+        <input
+            type="password"
+            id="password"
+            placeholder="Введіть пароль"
+            required
+        >
 
-        <section class="subject">
-            <h3>Фізика</h3>
-            <p>Розділ: МКТ і термодинаміка</p>
-            <p>Теоретичний матеріал і тестові завдання для перевірки знань.</p>
-            <button onclick="alert('Розділ готується')">Перейти до тестів</button>
-        </section>
+        <button type="submit" id="loginButton">Увійти</button>
+    </form>
 
-        <section class="subject">
-            <h3>Вища математика</h3>
-            <p>Розділ: Елементи аналітичної геометрії</p>
-            <p>Теоретичний матеріал і тестові завдання для перевірки знань.</p>
-            <button onclick="alert('Розділ готується')">Перейти до тестів</button>
-        </section>
+    <div id="message"></div>
+</section>
 
+<!-- ОСНОВНИЙ ВМІСТ ПІСЛЯ ВХОДУ -->
+<div id="appContent" hidden>
+
+    <div class="user-panel">
+        <span id="userInfo">Ви увійшли до системи</span>
+        <button class="logout-button" onclick="logout()">Вийти</button>
     </div>
-</main>
 
-<footer>
-    Електронна система тестування
-</footer>
+    <main>
+        <h2>Оберіть навчальну дисципліну</h2>
+
+        <div class="subjects">
+
+            <section class="subject">
+                <h3>Фізика</h3>
+                <p>Розділ: Електродинаміка</p>
+                <p>Теоретичний матеріал і тестові завдання.</p>
+                <button onclick="location.href='electrodynamika.html'">
+                    Перейти до тестів
+                </button>
+            </section>
+
+            <section class="subject">
+                <h3>Фізика</h3>
+                <p>Розділ: МКТ і термодинаміка</p>
+                <p>Теоретичний матеріал і тестові завдання.</p>
+                <button onclick="alert('Розділ готується')">
+                    Перейти до тестів
+                </button>
+            </section>
+
+            <section class="subject">
+                <h3>Вища математика</h3>
+                <p>Розділ: Елементи аналітичної геометрії</p>
+                <p>Теоретичний матеріал і тестові завдання.</p>
+                <button onclick="alert('Розділ готується')">
+                    Перейти до тестів
+                </button>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        Електронна система тестування
+    </footer>
+
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-    const SUPABASE_URL = 'https://lbuavpqtapzxjybvxmag.supabase.co';
+const SUPABASE_URL = 'https://lbuavpqtapzxjybvxmag.supabase.co';
 
-    const SUPABASE_KEY = 'sb_publishable_QkkIsAzSlpOSLTwwTLGAXA_Sa2fSFpd';
+const SUPABASE_KEY = 'sb_publishable_QkkIsAzSlpOSLTwwTLGAXA_Sa2fSFpd';
 
-    const supabaseClient = window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
 
-    async function checkConnection() {
-        const { data, error } = await supabaseClient
-            .from('subjects')
-            .select('title');
+const loginPanel = document.getElementById('loginPanel');
+const appContent = document.getElementById('appContent');
+const loginForm = document.getElementById('loginForm');
+const message = document.getElementById('message');
 
-        if (error) {
-            console.error('Помилка підключення:', error.message);
-        } else {
-            console.log('З'єднання успішне!');
-            console.log('Навчальні дисципліни:', data);
-        }
+function showApp(user) {
+    loginPanel.hidden = true;
+    appContent.hidden = false;
+
+    document.getElementById('userInfo').textContent =
+        'Ви увійшли: ' + user.email;
+}
+
+function showLogin() {
+    loginPanel.hidden = false;
+    appContent.hidden = true;
+}
+
+loginForm.addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const button = document.getElementById('loginButton');
+
+    message.textContent = '';
+    button.disabled = true;
+    button.textContent = 'Вхід...';
+
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: password
+    });
+
+    button.disabled = false;
+    button.textContent = 'Увійти';
+
+    if (error) {
+        message.textContent = 'Помилка входу. Перевірте електронну пошту та пароль.';
+        console.error(error.message);
+        return;
     }
 
-    checkConnection();
+    showApp(data.user);
+});
+
+async function logout() {
+    const { error } = await supabaseClient.auth.signOut();
+
+    if (error) {
+        alert('Не вдалося вийти із системи.');
+        return;
+    }
+
+    showLogin();
+    loginForm.reset();
+    message.textContent = '';
+}
+
+// Перевіряємо, чи користувач уже авторизований
+async function checkUser() {
+    const { data, error } = await supabaseClient.auth.getSession();
+
+    if (error) {
+        showLogin();
+        return;
+    }
+
+    if (data.session) {
+        showApp(data.session.user);
+    } else {
+        showLogin();
+    }
+}
+
+checkUser();
+
+// Відстежуємо вхід і вихід користувача
+supabaseClient.auth.onAuthStateChange((event, session) => {
+    if (event === 'SIGNED_IN' && session) {
+        showApp(session.user);
+    }
+
+    if (event === 'SIGNED_OUT') {
+        showLogin();
+    }
+});
 </script>
+
 </body>
 </html>
-
