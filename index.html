@@ -143,14 +143,27 @@ footer {
 <script>
     const SUPABASE_URL = 'https://lbuavpqtapzxjybvxmag.supabase.co';
 
-    const SUPABASE_KEY = 'ТУТ_ТВІЙ_PUBLISHABLE_KEY';
+    const SUPABASE_KEY = 'sb_publishable_QkkIsAzSlpOSLTwwTLGAXA_Sa2fSFpd';
 
     const supabaseClient = window.supabase.createClient(
         SUPABASE_URL,
         SUPABASE_KEY
     );
 
-    console.log('Supabase підключено');
+    async function checkConnection() {
+        const { data, error } = await supabaseClient
+            .from('subjects')
+            .select('title');
+
+        if (error) {
+            console.error('Помилка підключення:', error.message);
+        } else {
+            console.log('З'єднання успішне!');
+            console.log('Навчальні дисципліни:', data);
+        }
+    }
+
+    checkConnection();
 </script>
 </body>
 </html>
